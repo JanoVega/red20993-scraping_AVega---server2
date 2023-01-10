@@ -1,0 +1,10 @@
+name: scrapingEmpEnv
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - ipykernel
+  - pandas
+  - bs4
+  - requests
+  - selenium
