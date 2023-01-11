@@ -27,13 +27,13 @@ items = [#'ingenieria en informacion y control de gestion'\
                 ]
 
 
-sites = [#'chiletrabajos',\
-         #'opcionempleo',\
+sites = ['chiletrabajos',\
+         'opcionempleo',\
          'computrabajo',\
-         #'elmercurio',\
-         #'trabajando',\
-         #'laborum',\
-         #'indeed',\
+         'elmercurio',\
+         'trabajando',\
+         'laborum',\
+         'indeed',\
          ]
 
     
