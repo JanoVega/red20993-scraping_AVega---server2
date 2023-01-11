@@ -132,7 +132,7 @@ def get_page_dynamic(url):
     """
     # abro chrome para extraer los datos de la oferta
     chrome_options = Options()
-    #chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--headless")
     driver = webdriver.Chrome(service=service, options=chrome_options)
     
     try:
