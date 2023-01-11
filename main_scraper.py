@@ -64,6 +64,7 @@ class Crawler():
                 except AssertionError as e:
                     informe_row += '    '+site +': '+ str(e) +'\n'
                 except Exception as e:
+                    print(e)
                     informe_row += '    '+site +': '+ str(e) +'\n'
                 time.sleep(5)
                     
