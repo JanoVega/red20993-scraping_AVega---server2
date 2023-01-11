@@ -22,8 +22,8 @@ Sitios que no funcionan
 
 items = [#'ingenieria en informacion y control de gestion'\
           #  ,'ingenieria en administracion logistica'\
-         #   , 'contador publico y auditor'\
-         'medicina nuclear'
+            , 'contador publico y auditor'\
+         #'medicina nuclear'
                 ]
 
 
