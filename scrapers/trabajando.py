@@ -20,7 +20,6 @@ from utils.csv_utils import save_to_failed_links_csv
 
 # ubicacion del ejecutable para chromedriver 
 path = os.getcwd() + '/chromedriver'
-print(path)
 service = Service(executable_path=path)
 
 def get_to_page(driver, url, search_keyword):
