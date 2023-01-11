@@ -41,7 +41,7 @@ def get_page_dynamic(url):
     """
     chrome_options = Options()
     chrome_options.add_argument('--disable-blink-features=AutomationControlled')
-    #chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--headless")
     driver = webdriver.Chrome(service=service, options=chrome_options)  
     driver.get(url)
     try:
@@ -72,7 +72,7 @@ def get_page_safe_dynamic(url):
     """     
 
     chrome_options = Options()
-    #chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--headless")
     chrome_options.add_argument('--disable-blink-features=AutomationControlled')
     driver = webdriver.Chrome(service=service, options=chrome_options)  
     try:
