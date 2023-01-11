@@ -50,7 +50,7 @@ def get_page_safe_dynamic(url):
         WebDriverWait(driver, 3)
         html = driver.page_source
     finally:   
-        driver.quit()
+        driver.close()
     return BeautifulSoup(html,'html.parser')    
 
 def get_page_dynamic(url):
@@ -81,7 +81,7 @@ def get_page_dynamic(url):
     #except Exception as e: 
         #print(e)
     finally:
-       driver.quit()
+       driver.close()
     return BeautifulSoup(html,'html.parser')
 
 def results(search_keyword):
