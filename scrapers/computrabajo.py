@@ -18,7 +18,7 @@ from utils.csv_utils import save_to_failed_links_csv
 from utils.date_utils import is_newer_date
 
 # ubicacion del ejecutable para chromedriver
-path = os.getcwd() + '//chromedriver'
+path = os.getcwd() + '/chromedriver'
 service = Service(executable_path=path)
 
 def get_page_safe_dynamic(url):
