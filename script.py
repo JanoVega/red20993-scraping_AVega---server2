@@ -20,10 +20,10 @@ Sitios que no funcionan
 
 """
 
-items = ['ingenieria en informacion y control de gestion'\
-            ,'ingenieria en administracion logistica'\
-            , 'contador publico y auditor'\
-         #'fisico nuclear'
+items = [#'ingenieria en informacion y control de gestion'\
+          #  ,'ingenieria en administracion logistica'\
+         #   , 'contador publico y auditor'\
+         medicina nuclear
                 ]
 
 
@@ -38,7 +38,7 @@ sites = ['chiletrabajos',\
 
     
 """ formato  día/mes/año, dia y mes sin 0 a la izquerda, ej: 2/5/2022 """
-dia_primera_ejecucion = '10/1/2023'
+dia_primera_ejecucion = '11/1/2023'
 
 if get_date('hoy') == dia_primera_ejecucion:
     """ para instanciar los csv """
