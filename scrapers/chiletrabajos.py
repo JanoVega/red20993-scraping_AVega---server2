@@ -3,8 +3,16 @@ import time
 import numpy as np
 import re
 import gc
+import os
 
 from bs4 import BeautifulSoup 
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+
 
 from utils.csv_utils import save_urls
 from utils.csv_utils import load_date
@@ -14,12 +22,23 @@ from utils.csv_utils import save_to_failed_links_csv
 from utils.date_utils import get_date
 from utils.date_utils import is_newer_date
 
-def get_page(url):         
+
+# ubicacion del ejecutable para chromedriver
+path = os.getcwd() + '/chromedriver'
+#print(path)
+#path = '/snap/bin/chromium.chromedriver'
+service = Service(executable_path=path)
+
+
+def get_page_dynamic(url):
     """
-    Funcion para extraaer el html de la página de una oferta   
+    Método para extraer el html de las páginas con los resultados.
 
     Parameters
     ----------
+    driver : selenium.webdriver
+        instancia del navegador
+
     url : str
         dirección de la oferta
 
@@ -27,32 +46,52 @@ def get_page(url):
     -------
     BeautifulSoup object.
     """
-    
-    req = requests.get(url)  
-    return BeautifulSoup (req.text, 'html.parser')
-
-def get_page_safe(url):
-    """
-    Funcion para extraaer el html de las páginas con los resultados, en caso    
-     de una desconexion espera un par de segs para intentar de nuevo.
-
-    Parameters
-    ----------
-    url : str
-        dirección de la oferta
-
-    Returns
-    -------
-    BeautifulSoup object.
-    """
-    
     try:
-        req = requests.get(url)  
-        return BeautifulSoup (req.text, 'html.parser')
+        chrome_options = Options()
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--headless")
+        driver = webdriver.Chrome(service=service, options=chrome_options)        
+        driver.get(url)
+        WebDriverWait(driver, 5)\
+            .until(EC.presence_of_element_located((By.ID, 'dfpgrid29')))
+        html = driver.page_source
+    #except Exception as e: 
+        #print(e)
+    finally:
+       driver.close()
+    return BeautifulSoup(html,'html.parser')
+
+def get_page_safe_dynamic(url):
+    """
+    Método para extraer el html de las páginas con los resultados, 
+    chequea si hay un error de conexión.
+
+    Parameters
+    ----------    
+    url : str
+        dirección de la oferta
+
+    Returns
+    -------
+    BeautifulSoup object.
+    """  
+    chrome_options = Options()
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument('--disable-blink-features=AutomationControlled')
+    driver = webdriver.Chrome(service=service, options=chrome_options)        
+    try:
+        driver.get(url)
+        WebDriverWait(driver, 3)
+        html = driver.page_source
     except ConnectionError:
         time.sleep(3)
-        req = requests.get(url)  
-        return BeautifulSoup (req.text, 'html.parser')      
+        driver.get(url)
+        WebDriverWait(driver, 3)
+        html = driver.page_source
+    finally:   
+        driver.close()
+    return BeautifulSoup(html,'html.parser')     
 
 def results(search_keyword):
     """
@@ -67,7 +106,7 @@ def results(search_keyword):
     -------
     None
     """    
-    bs = get_page_safe('https://www.chiletrabajos.cl/encuentra-un-empleo?action=search&order_by=&ord=&within=25&2='\
+    bs = get_page_safe_dynamic('https://www.chiletrabajos.cl/encuentra-un-empleo?action=search&order_by=&ord=&within=25&2='\
                  +str(search_keyword)+'&filterSearch=Buscar')
     
     num_results = re.sub('[\D]', '',\
@@ -111,7 +150,7 @@ def results(search_keyword):
             hay más paginas que recorrer      
             """
             try:
-                bs = get_page_safe('https://www.chiletrabajos.cl/encuentra-un-empleo/'\
+                bs = get_page_safe_dynamic('https://www.chiletrabajos.cl/encuentra-un-empleo/'\
                                   +str(i*results_per_page)\
                                   +'?action=search&order_by=&ord=&within=25&2='\
                                   +str(search_keyword)+'&filterSearch=Buscar')
@@ -225,7 +264,7 @@ def scrape(url, search_keyword):
     """
 
     # No tener try aqui es intencional    
-    bs = get_page(url)
+    bs = get_page_dynamic(url)
     
     # título
     title = bs.find('h1').text
