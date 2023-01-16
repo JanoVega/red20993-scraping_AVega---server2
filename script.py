@@ -27,7 +27,7 @@ items = [#'ingenieria en informacion y control de gestion'\
                 ]
 
 
-sites = ['chiletrabajos',\
+sites = [#'chiletrabajos',\
          #'opcionempleo',\
          'computrabajo',\
          #'elmercurio',\
