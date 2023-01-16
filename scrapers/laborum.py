@@ -48,8 +48,6 @@ def get_page_dynamic(url):
     try:
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, 'icon-light-money'))) 
         html = driver.page_source 
-    except Exception as e:
-        print(e)
     finally:
         driver.quit()
     return BeautifulSoup(html,'html.parser')

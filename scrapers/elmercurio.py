@@ -60,8 +60,6 @@ def get_tricky_url(url,search_keyword):
             .click(boton)\
             .perform()
         url=driver.current_url
-    except Exception as e: 
-        print(e)
     finally:
         driver.quit()
     return url

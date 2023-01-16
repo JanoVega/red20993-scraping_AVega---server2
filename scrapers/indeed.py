@@ -46,8 +46,6 @@ def get_page_dynamic(url):
     driver.get(url)
     try:
         html = driver.page_source 
-    except Exception as e:
-        print(e)
     finally:
         driver.quit()
     return BeautifulSoup(html,'html.parser')
@@ -145,7 +143,6 @@ def results(search_keyword):
         
     # resto de páginas
     # chequea si no estoy en la ultima pagina con resultados
-    n=0
     try:
         while bs.find_all('a', {'class', 'css-cy0uue e8ju0x50'})[-1].attrs['aria-label']=='Next Page': 
             """
@@ -162,8 +159,7 @@ def results(search_keyword):
             # se expande la lista con links
             results += [tag.a['href'] for tag in bs.find_all('div',{'class','job_seen_beacon'})]  
             results_dates += [get_date(tag.find('span',{'class','date'}).text) \
-                        for tag in bs.find_all('div',{'class','job_seen_beacon'})]
-            print(n)
+                        for tag in bs.find_all('div',{'class','job_seen_beacon'})]          
     except:
         pass    
     

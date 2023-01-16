@@ -140,8 +140,6 @@ def get_page_dynamic(url):
         driver.get(url)
         WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.ID, 'offerHeader')))
         html = driver.page_source
-    except Exception as e:
-        print(e)
     finally:
         driver.close()
     return BeautifulSoup(html, 'html.parser')
