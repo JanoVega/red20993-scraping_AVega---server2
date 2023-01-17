@@ -143,25 +143,26 @@ def results(search_keyword):
         
     # resto de páginas
     # chequea si no estoy en la ultima pagina con resultados
-    try:
-        while bs.find_all('a', {'class', 'css-cy0uue e8ju0x50'})[-1].attrs['aria-label']=='Next Page': 
-            """
-            recorré todas las páginas de resultados desde la 2da si es que hay más paginas que recorrer      
-            """
-            try:
-                # extrae el link del boton
-                url = 'https://cl.indeed.com' \
-                    + bs.find_all('a', {'class', 'css-cy0uue e8ju0x50'})[-1].attrs['href']
-                
-                bs = get_page_safe_dynamic(url)
-            except:
-                continue
-            # se expande la lista con links
-            results += [tag.a['href'] for tag in bs.find_all('div',{'class','job_seen_beacon'})]  
-            results_dates += [get_date(tag.find('span',{'class','date'}).text) \
-                        for tag in bs.find_all('div',{'class','job_seen_beacon'})]          
-    except:
-        pass    
+    Contador_ciclo = 0
+    while bs.find_all('a', {'class', 'css-cy0uue e8ju0x50'})[-1].attrs['aria-label']=='Next Page': 
+        """
+        recorré todas las páginas de resultados desde la 2da si es que hay más paginas que recorrer      
+        """
+        assert Contador_ciclo < 200, '200 iteraciones en el ciclo'
+        try:
+            # extrae el link del boton
+            url = 'https://cl.indeed.com' \
+                + bs.find_all('a', {'class', 'css-cy0uue e8ju0x50'})[-1].attrs['href']
+            
+            bs = get_page_safe_dynamic(url)
+        except:
+            continue
+        Contador_ciclo += 1
+        # se expande la lista con links
+        results += [tag.a['href'] for tag in bs.find_all('div',{'class','job_seen_beacon'})]  
+        results_dates += [get_date(tag.find('span',{'class','date'}).text) \
+                    for tag in bs.find_all('div',{'class','job_seen_beacon'})]          
+
     
     ######
     # fecha de la última vez que se ejecuto el main_scraper con este item

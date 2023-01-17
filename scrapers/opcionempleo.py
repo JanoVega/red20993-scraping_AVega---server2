@@ -111,10 +111,12 @@ def results(search_keyword):
     # variable auxiliar para avanzar la página
     p = 1
     # chequea si hay botones para la siguiente página 
+    Contador_ciclo = 0
     while bs.find_all('a',{'class','btn btn-r btn-primary-inverted'}):   
         # para esta página, p tiene un valor máximo de 100,
         # 20 resultados por página
         p += 1
+        assert Contador_ciclo < 200, '200 iteraciones en el ciclo'
         """
         recorré todas las páginas de resultados desde la 2da si es que hay más paginas que recorrer      
         """
@@ -123,6 +125,7 @@ def results(search_keyword):
                  +str(search_keyword)+'.html?radius=0&p='+str(p))
         except:
             continue   
+        Contador_ciclo += 1
         assert len(bs.find_all('article',{'class','job clicky'})) != 0 
         # se expande la lista con links
         results += [ tag.a['href'] for tag in bs.find_all('article',{'class','job clicky'})]    

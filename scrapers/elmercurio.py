@@ -153,12 +153,14 @@ def results(search_keyword):
     # resto de páginas
     p = 1
     # chequea si hay botones para la siguiente pagina 
+    Contador_ciclo = 0
     while bs.find_all('a', {'class', 'botonActivado'}):   
         p += 1    
         """
         recorré todas las páginas de resultados desde la 2da si es que
         hay más paginas que recorrer      
         """
+        assert Contador_ciclo < 20, '20 iteraciones en el ciclo'
         try:
             url = tricky_url+'/'+str(p)
             bs = get_page_safe(url)
@@ -171,7 +173,7 @@ def results(search_keyword):
         except:
             continue   
         assert len(results) != 0  
-   
+        Contador_ciclo += 1
     # fecha de la última vez que se ejecuto el main_scraper con este item
     try: 
        resume_date = load_date('elmercurio', search_keyword)

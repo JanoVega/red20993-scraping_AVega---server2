@@ -146,19 +146,21 @@ def results(search_keyword):
     p = 1
     # resto de páginas
     new_results = ['','']
+    Contador_ciclo = 0
     while len(new_results) != 0:
         p += 1 
         """
         recorré todas las páginas de resultados desde la 2da si es que hay más paginas que recorrer      
         """
         # lista para que funcione correctamente el while
-        new_results = [] 
+        new_results = []
+        assert Contador_ciclo < 200, '200 iteraciones en el ciclo' 
         try:
             bs = get_page_safe_dynamic('https://www.laborum.cl/empleos-busqueda-'\
                  + str(search_keyword) + '.html?page='+str(p))
         except:
             continue
-            
+        Contador_ciclo += 1
         # lista de avisos
         for i, div in enumerate(bs.find_all('div')):
             try:

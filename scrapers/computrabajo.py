@@ -122,17 +122,19 @@ def results(search_keyword):
     # resto de páginas
     p = 1
     # chequea si hay botones para la siguiente pagina 
+    Contador_ciclo = 0
     while bs.find_all('span',{'class','b_primary w48 buildLink cp'}):   
         p += 1
         """
         recorré todas las páginas de resultados desde la 2da si es que hay más paginas que recorrer      
         """
+        assert Contador_ciclo < 200, '200 iteraciones en el ciclo'
         try:
             bs = get_page_safe_dynamic('https://cl.computrabajo.com/trabajo-de-'\
                  +str(search_keyword)+'?p='+str(p))
         except:
             continue   
-
+        Contador_ciclo += 1
         assert len(bs.find_all('article')) != 0    
         results += ['?p='+str(p)+'#'+re.sub('[a-z,-/]','',tag.a['href']).split('#')[0] for tag in bs.find_all('article')]
         results_dates += [tag.div.find_all('p')[-1].text for tag in bs.find_all('article')]

@@ -157,72 +157,74 @@ def results(search_keyword):
     -------
     None
     """ 
-    try:
-        chrome_options = Options()
-        chrome_options.add_argument("--headless")
-        driver = webdriver.Chrome(service=service, options=chrome_options)
-        
-        url = 'https://www.trabajando.cl/'
-        get_to_page(driver, url, search_keyword)
-        
-        WebDriverWait(driver, 8)\
-            .until(EC.presence_of_element_located((By.ID, 'detalleOferta')))
     
-        # extraígo el html
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    driver = webdriver.Chrome(service=service, options=chrome_options)
+    
+    url = 'https://www.trabajando.cl/'
+    get_to_page(driver, url, search_keyword)
+    
+    WebDriverWait(driver, 8)\
+        .until(EC.presence_of_element_located((By.ID, 'detalleOferta')))
+
+    # extraígo el html
+    html = driver.page_source
+    bs = BeautifulSoup(html,'html.parser')
+
+    # trato de extraer el número de resultados, 
+    # si no funciona, "recargo la página"
+    assert not bs.find_all('h2',{'class','h3 mx-auto'}),\
+        'No hay ofertas de trabajo para tu búsqueda'
+
+    try:
+        num_results = re.sub('[\D]', '',bs.find('span',{'class', \
+                    'searched-results'})\
+                        .text.split()[0] )
+        num_results = int(num_results )
+    except:
         html = driver.page_source
         bs = BeautifulSoup(html,'html.parser')
+        num_results = re.sub('[\D]', '',bs.find('span',{'class', \
+                    'searched-results'})\
+                        .text.split()[0] )
+        num_results = int(num_results ) 
+
+    n = 0
+    # fecha de la última vez que se ejecuto el main_scraper con este item
+    try: 
+        resume_date = load_date('trabajando', search_keyword)
+    except:
+        resume_date = get_date('hace 999 dias')
+        
+    results = []
+    results_dates = []
+    # hago un "scroll down" hasta obtener todas las otras ofertas, 
+    # voy guardando los links de estas.
+    p=1
+    Contador_ciclo = 0
+    while len(results)/(num_results-1)<0.99:
     
-        # trato de extraer el número de resultados, 
-        # si no funciona, "recargo la página"
-        assert not bs.find_all('h2',{'class','h3 mx-auto'}),\
-            'No hay ofertas de trabajo para tu búsqueda'
-    
+        html = driver.page_source
+        bs = BeautifulSoup(html,'html.parser')
+        assert Contador_ciclo < 200, '200 iteraciones en el ciclo'
+        if len(bs.find_all('div', {'class', 'result-box d-flex position-relative overflow-hidden'})) !=0 :
+                results += [tag.a['href'] for tag in bs.find_all('div',\
+                                    {'class', 'result-box d-flex position-relative overflow-hidden'})]
+                results_dates += [get_date(tag.find_all('div')[-1].span.text) \
+                                    for tag in bs.find_all('div',\
+                                    {'class', 'result-box d-flex position-relative overflow-hidden'})]
+                p += 1
         try:
-            num_results = re.sub('[\D]', '',bs.find('span',{'class', \
-                        'searched-results'})\
-                            .text.split()[0] )
-            num_results = int(num_results )
-        except:
-            html = driver.page_source
-            bs = BeautifulSoup(html,'html.parser')
-            num_results = re.sub('[\D]', '',bs.find('span',{'class', \
-                        'searched-results'})\
-                            .text.split()[0] )
-            num_results = int(num_results ) 
-    
-        n = 0
-        # fecha de la última vez que se ejecuto el main_scraper con este item
-        try: 
-            resume_date = load_date('trabajando', search_keyword)
-        except:
-            resume_date = get_date('hace 999 dias')
-            
-        results = []
-        results_dates = []
-        # hago un "scroll down" hasta obtener todas las otras ofertas, 
-        # voy guardando los links de estas.
-        p=1
-        while len(results)/(num_results-1)<0.99:
-        
-            html = driver.page_source
-            bs = BeautifulSoup(html,'html.parser')
-        
-            if len(bs.find_all('div', {'class', 'result-box d-flex position-relative overflow-hidden'})) !=0 :
-                    results += [tag.a['href'] for tag in bs.find_all('div',\
-                                     {'class', 'result-box d-flex position-relative overflow-hidden'})]
-                    results_dates += [get_date(tag.find_all('div')[-1].span.text) \
-                                      for tag in bs.find_all('div',\
-                                     {'class', 'result-box d-flex position-relative overflow-hidden'})]
-                    p += 1
-            try:
-                WebDriverWait(driver, 1)
-                Click_more_results(driver)
-            except Exception as e:
-                #print(e) , el error ocurre cuando no hayan mas cosos que sacar
-                break
-            #print(len(results), '/', num_results)
-    
-       # search_page = driver.current_url
+            WebDriverWait(driver, 1)
+            Click_more_results(driver)
+        except Exception as e:
+            #print(e) , el error ocurre cuando no hayan mas cosos que sacar
+            break
+        Contador_ciclo += 1
+        #print(len(results), '/', num_results)
+    try:
+       0
     finally:
         driver.quit()
 

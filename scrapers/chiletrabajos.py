@@ -143,12 +143,15 @@ def results(search_keyword):
       
     # resto de páginas
     # chequea si hay botones para la siguiente pagina   
+    Contador_ciclo = 0
     if bs.find_all('ul',{'class','pagination m-0 float-right'}):
         for i in range(2,num_results//results_per_page+1):
             """
             recorré todas las páginas de resultados desde la 2da si es que 
             hay más paginas que recorrer      
             """
+            assert Contador_ciclo < 200, '200 iteraciones en el ciclo'
+
             try:
                 bs = get_page_safe_dynamic('https://www.chiletrabajos.cl/encuentra-un-empleo/'\
                                   +str(i*results_per_page)\
@@ -157,6 +160,7 @@ def results(search_keyword):
             except:
                 continue   
 
+            Contador_ciclo += 1
             assert len(bs.find_all('div',{'class','job-item with-thumb destacado no-hover'})) != 0    
             #extraigo las ofertas
             results += [tag.a['href'] for tag in\
