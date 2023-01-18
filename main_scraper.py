@@ -18,7 +18,7 @@ from utils.csv_utils import create_dates_csv, new_csv, save_date
 from utils.csv_utils import create_failed_links_csv
 from utils.csv_utils import create_urls_csv
 from utils.date_utils import get_date
-
+from utils.check_utils import csv_check
 
 class Crawler():
     def search(search_keywords, sites):
@@ -78,4 +78,7 @@ class Crawler():
         create_failed_links_csv()
         create_urls_csv()
         create_dates_csv()
+
+    def check(sites):
+        csv_check(sites)
     

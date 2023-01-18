@@ -120,6 +120,9 @@ def get_page_dynamic(url):
         driver.quit()
     return BeautifulSoup(html,'html.parser')
 
+def results_check():
+    assert 0!=0, 'no se checkea elmercurio'
+
 def results(search_keyword):
     """
     Método que recorre las páginas con los resultados

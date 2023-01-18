@@ -2,6 +2,7 @@ from pyvirtualdisplay import Display
 
 from main_scraper import Crawler
 from utils.date_utils import get_date
+
 """
 Sitios que funcionan:
     
@@ -48,6 +49,7 @@ if get_date('hoy') == dia_primera_ejecucion:
 display = Display(visible=0, size=(800, 600))
 display.start()
 
+Crawler.check(sites)
 Crawler.search(items, sites)
 
 
