@@ -42,7 +42,7 @@ def csv_fill(sites):
 
     date = get_date('hoy')
     date = re.sub('/', '.', date)
-    f = open('check_informe_'+date+'.txt', 'w') 
+    f = open('check_scrap_'+date+'.txt', 'w') 
     f.write( 'datos nuevos en el csv / resultados según la página'+ '\n' )
     f.close()
     
@@ -66,7 +66,7 @@ def csv_fill(sites):
              check_row += '    '+site +': '+ str(e) +'\n'
          time.sleep(5)
              
-    with open('check_informe_'+date+'.txt', 'a') as f:
+    with open('check_scrap_'+date+'.txt', 'a') as f:
          f.write( check_row )
          f.write('-------------------------------------------------'+'\n')
              
@@ -133,7 +133,7 @@ def csv_check(sites):
   
     date = get_date('hoy')    
     date = re.sub('/', '.', date)
-    f = open('check_'+date+'.txt', 'w') 
+    f = open('check_informe_'+date+'.txt', 'w') 
     f.close()       
     #%%
     for index, site in enumerate(sites):
@@ -159,7 +159,7 @@ def csv_check(sites):
             check_row += '    '+str(e)
         for n in [2,3,-4]:
             check_row += '    '+str(cvs_row[n]) +': '+str(fila_oferta[n]) +'/'+str(aux)+'\n'  
-        with open('check_'+date+'.txt', 'a') as f:
+        with open('check_informe_'+date+'.txt', 'a') as f:
             f.write( check_row )
             f.write('-------------------------------------------------'+'\n')
        
