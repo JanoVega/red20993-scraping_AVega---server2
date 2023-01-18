@@ -25,7 +25,7 @@ from scrapers_check import indeed
 from scrapers_check import trabajando
         
 from utils.date_utils import get_date
-from csv_utils import new_check_csv    
+from utils.csv_utils import new_check_csv    
 
 def csv_fill(sites):
     """
