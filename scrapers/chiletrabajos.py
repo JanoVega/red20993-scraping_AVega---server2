@@ -52,8 +52,7 @@ def get_page_dynamic(url):
         chrome_options.add_argument("--headless")
         driver = webdriver.Chrome(service=service, options=chrome_options)        
         driver.get(url)
-        WebDriverWait(driver, 5)\
-            .until(EC.presence_of_element_located((By.ID, 'dfpgrid29')))
+        WebDriverWait(driver, 2)
         html = driver.page_source
     #except Exception as e: 
         #print(e)

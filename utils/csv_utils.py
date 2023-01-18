@@ -162,3 +162,48 @@ def load_url(site, keyword, last_date):
                     .loc[(df.loc[:,'fecha'] == last_date)]\
                     .loc[(df.loc[:,'concepto'] == keyword)]\
                     .url )
+#%%
+def new_check_csv(file_name):
+    """ Reescrive un csv si existe, crea uno nuevo si no.
+        La fecha puede causar problemas la hora de realizar la comparacion
+    """
+    try:
+        csv_jobs = open(file_name+'.csv', 'wt+', encoding='utf-8')
+        writer = csv.writer(csv_jobs)
+        cvs_row = [ 'concepto',\
+                    'categoria',\
+                    'titulo',\
+                    'cuerpo',\
+                    #'fecha',\
+                    'ubicacion',\
+                    'modalidad',\
+                    'jornada',\
+                    'inclusividad',\
+                    'salario',\
+                    'publicador',\
+                    'etiquetas',\
+                    'url',\
+                    'pagina_web',
+                    ]
+        writer.writerow(cvs_row) 
+    finally:         
+        # cierra el csv
+        csv_jobs.close()
+
+
+def save_to_check_csv(csv_row):
+    """ Escribe una columna en el csv"""
+    csv_row=[csv_item for csv_item in csv_row]
+    file_name='check'
+    try:
+        # abre el csv 
+        csv_jobs= open(file_name+'.csv', 'a+', encoding='utf-8')
+        writer = csv.writer(csv_jobs)
+        writer.writerow(csv_row)       
+    finally:        
+        # cierra el csv
+        csv_jobs.close()
+        gc.collect()
+    
+
+
