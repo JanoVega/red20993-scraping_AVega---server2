@@ -25,7 +25,7 @@ from utils.csv_utils import save_to_check_csv
 
 # ubicacion del ejecutable para chromedriver
 path = os.getcwd() + '\\chromedriver'
-path = '/snap/bin/chromium.chromedriver'
+#path = '/snap/bin/chromium.chromedriver'
 service = Service(executable_path=path)
 
 def get_tricky_url(url,search_keyword):
@@ -120,7 +120,7 @@ def get_page_dynamic(url):
         driver.quit()
     return BeautifulSoup(html,'html.parser')
 
-def results_check():
+def results_check(_):
     assert 0!=0, 'no se checkea elmercurio'
 
 def results(search_keyword):
