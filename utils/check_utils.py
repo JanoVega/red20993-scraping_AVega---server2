@@ -104,6 +104,14 @@ def csv_check(sites):
     new_check_csv('check')
     csv_fill(sites)
     search_keyword = 'jefe'
+    sites_dict={'chiletrabajos':chiletrabajos ,\
+                'opcionempleo':opcionempleo,\
+                'computrabajo':computrabajo,\
+                'elmercurio':elmercurio,\
+                'laborum':laborum,\
+                'indeed':indeed,\
+                'trabajando':trabajando
+                  }
     
     cvs_row = ['concepto',\
                'categoria',\
@@ -145,7 +153,7 @@ def csv_check(sites):
         check_row = str(site) +' '+ date + ' :'+'\n'
         
         try:
-            site.results_check(search_keyword)
+            sites_dict[site].results_check(search_keyword)
             check_row += '    '+'no hay problema con los resultados'
         except Exception as e:    
             check_row += '    '+str(e)

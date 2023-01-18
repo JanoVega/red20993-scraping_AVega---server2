@@ -19,7 +19,7 @@ from utils.date_utils import is_newer_date
 
 # ubicacion del ejecutable para chromedriver
 path = os.getcwd() + '/chromedriver'
-print(path)
+#print(path)
 #path = '/snap/bin/chromium.chromedriver'
 service = Service(executable_path=path)
 
