@@ -86,7 +86,7 @@ def get_page_dynamic(url):
        driver.quit()
     return BeautifulSoup(html,'html.parser')
 
-def result_check(search_keyword):
+def results_check(search_keyword):
     bs = get_page_safe_dynamic('https://cl.computrabajo.com/trabajo-de-'\
          +str(search_keyword))
     assert bs.find_all('p', {'class', 'fs24 tc pAll30 mAuto w60 w100_m'}) ==\

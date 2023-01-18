@@ -153,7 +153,7 @@ def get_page_dynamic(url):
 
 def results_check(search_keyword):
     chrome_options = Options()
-    #chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--headless")
     driver = webdriver.Chrome(service=service, options=chrome_options)
     
     url = 'https://www.trabajando.cl/'
@@ -192,7 +192,7 @@ def results(search_keyword):
     """ 
     try:
         chrome_options = Options()
-        #chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--headless")
         driver = webdriver.Chrome(service=service, options=chrome_options)
         
         url = 'https://www.trabajando.cl/'
