@@ -28,18 +28,19 @@ from utils.csv_utils import load_url
 from utils.csv_utils import save_to_failed_links_csv
 from utils.date_utils import get_date
 from utils.date_utils import is_newer_date
+from utils.csv_utils import save_to_check_csv
 
 
 # ubicacion del ejecutable para chromedriver
 path = os.getcwd() + '/chromedriver'
 #print(path)
-#path = '/snap/bin/chromium.chromedriver'
+path = '/snap/bin/chromium.chromedriver'
 service = Service(executable_path=path)
 
 
 def get_page_dynamic(url):
     """
-    Método para extraer el html de las páginas con los resultados.
+    Mï¿½todo para extraer el html de las pï¿½ginas con los resultados.
 
     Parameters
     ----------
@@ -47,7 +48,7 @@ def get_page_dynamic(url):
         instancia del navegador
 
     url : str
-        dirección de la oferta
+        direcciï¿½n de la oferta
 
     Returns
     -------
@@ -69,13 +70,13 @@ def get_page_dynamic(url):
 
 def get_page_safe_dynamic(url):
     """
-    Método para extraer el html de las páginas con los resultados, 
-    chequea si hay un error de conexión.
+    Mï¿½todo para extraer el html de las pï¿½ginas con los resultados, 
+    chequea si hay un error de conexiï¿½n.
 
     Parameters
     ----------    
     url : str
-        dirección de la oferta
+        direcciï¿½n de la oferta
 
     Returns
     -------
@@ -101,7 +102,7 @@ def get_page_safe_dynamic(url):
     
 def results_check(search_keyword):
 
-    bs = get_page_safe('https://www.chiletrabajos.cl/encuentra-un-empleo?action=search&order_by=&ord=&within=25&2='\
+    bs = get_page_safe_dynamic('https://www.chiletrabajos.cl/encuentra-un-empleo?action=search&order_by=&ord=&within=25&2='\
                  +str(search_keyword)+'&filterSearch=Buscar')
         
     num_results = re.sub('[\D]', '',\
@@ -127,7 +128,8 @@ def results(search_keyword):
     -------
     None
     """    
-
+    bs = get_page_safe_dynamic('https://www.chiletrabajos.cl/encuentra-un-empleo?action=search&order_by=&ord=&within=25&2='\
+                 +str(search_keyword)+'&filterSearch=Buscar')
     num_results = re.sub('[\D]', '',\
                      bs.find('h2',{'class','font-weight-light'})\
                      .text.split(' ')[0])
@@ -178,7 +180,7 @@ def scrape(url, search_keyword, save_row):
     """
 
     # No tener try aqui es intencional    
-    bs = get_page(url)
+    bs = get_page_dynamic(url)
     
     # tÃ­tulo
     
