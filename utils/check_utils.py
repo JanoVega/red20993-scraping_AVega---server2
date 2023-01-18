@@ -156,7 +156,7 @@ def csv_check(sites):
             sites_dict[site].results_check(search_keyword)
             check_row += '    '+'no hay problema con los resultados'
         except Exception as e:    
-            check_row += '    '+str(e)
+            check_row += '    '+str(e) + '\n'
         for n in [2,3,-4]:
             check_row += '    '+str(cvs_row[n]) +': '+str(fila_oferta[n]) +'/'+str(aux)+'\n'  
         with open('check_informe_'+date+'.txt', 'a') as f:

@@ -170,7 +170,7 @@ def scrape(url, search_keyword, save_row):
     
     # título
     try:
-        title = bs.find('p',{'class','title_offer fs21 fwB lh1_2'}).text
+        title = bs.find('p',{'class','title_offer fs21 ### fwB lh1_2'}).text
     except:
         title = ''
     # cuerpo

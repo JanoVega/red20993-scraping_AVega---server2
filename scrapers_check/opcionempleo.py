@@ -120,7 +120,7 @@ def results(search_keyword):
     assert num_results != 0, 'No se encontraron resultados'
 
     # lista con links  
-    results = [ tag.a['href'] for tag in bs.find_all('article',{'class','job clicky'})]    
+    results = [ tag.a['href'] for tag in bs.find_all('article',{'class','job ### clicky'})]    
         
     n = 0    
 

@@ -28,18 +28,18 @@ items = [#'ingenieria en informacion y control de gestion'\
                 ]
 
 
-sites = ['chiletrabajos',\
+sites = [#'chiletrabajos',\
          'opcionempleo',\
          'computrabajo',\
-         'elmercurio',\
-         'trabajando',\
-         'laborum',\
-         'indeed',\
+         #'elmercurio',\
+         #'trabajando',\
+         #'laborum',\
+         #'indeed',\
          ]
 
     
 """ formato  día/mes/año, dia y mes sin 0 a la izquerda, ej: 2/5/2022 """
-dia_primera_ejecucion = '16/1/2023'
+dia_primera_ejecucion = '18/1/2023'
 
 if get_date('hoy') == dia_primera_ejecucion:
     """ para instanciar los csv """
@@ -50,7 +50,7 @@ display = Display(visible=0, size=(800, 600))
 display.start()
 
 Crawler.check(sites)
-Crawler.search(items, sites)
+#Crawler.search(items, sites)
 
 
 display.stop()
