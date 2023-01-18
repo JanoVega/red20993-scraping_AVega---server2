@@ -42,7 +42,7 @@ def csv_fill(sites):
 
     date = get_date('hoy')
     date = re.sub('/', '.', date)
-    f = open('check_fill_'+date+'.txt', 'w') 
+    f = open('check_informe_'+date+'.txt', 'w') 
     f.write( 'datos nuevos en el csv / resultados según la página'+ '\n' )
     f.close()
     
@@ -66,7 +66,7 @@ def csv_fill(sites):
              check_row += '    '+site +': '+ str(e) +'\n'
          time.sleep(5)
              
-    with open('check_fill_'+date+'.txt', 'a') as f:
+    with open('check_informe_'+date+'.txt', 'a') as f:
          f.write( check_row )
          f.write('-------------------------------------------------'+'\n')
              
