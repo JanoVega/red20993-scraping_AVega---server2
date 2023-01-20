@@ -8,7 +8,7 @@ import re
 # Import the email modules we'll need
 from email.message import EmailMessage
 
-from date_utils import get_date
+from utils.date_utils import get_date
 
 
 def send_check_msg():
