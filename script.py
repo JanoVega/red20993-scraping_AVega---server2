@@ -3,7 +3,7 @@ from pyvirtualdisplay import Display
 from main_scraper import Crawler
 from utils.date_utils import get_date
 from utils.check_utils import get_not_0
-
+from utils.email_utils import send_check_msg
 
 """
 Sitios que funcionan:
@@ -53,6 +53,8 @@ display.start()
 
 Crawler.check(sites)
 # se filtran los sitios que no tuvieron resultados
+
+send_check_msg()
 sites = [sites[n] for n in get_not_0()]
 Crawler.search(items, sites)
 
