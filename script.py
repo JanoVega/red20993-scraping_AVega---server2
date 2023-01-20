@@ -31,7 +31,7 @@ items = [#'ingenieria en informacion y control de gestion'\
 
 
 sites = ['chiletrabajos',\
-         #'opcionempleo',\
+         'opcionempleo',\
          'computrabajo',\
          #'elmercurio',\
          #'trabajando',\
@@ -52,7 +52,8 @@ display = Display(visible=0, size=(800, 600))
 display.start()
 
 Crawler.check(sites)
-sites=sites[get_not_0()]
+sites = [sites[n] for n in get_not_0()]
+
 
 Crawler.search(items, sites)
 

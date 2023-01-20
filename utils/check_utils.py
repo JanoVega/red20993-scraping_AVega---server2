@@ -193,7 +193,7 @@ def get_not_0():
         else:
             #mandar el email
             pass
-        
+    #mandar email
     return not_0
 
 #%%
