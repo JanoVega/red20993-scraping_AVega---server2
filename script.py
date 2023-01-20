@@ -32,7 +32,7 @@ items = [#'ingenieria en informacion y control de gestion'\
 
 sites = ['chiletrabajos',\
          'opcionempleo',\
-         'computrabajo',\
+         #'computrabajo',\
          #'elmercurio',\
          #'trabajando',\
          #'laborum',\
@@ -52,6 +52,7 @@ display = Display(visible=0, size=(800, 600))
 display.start()
 
 Crawler.check(sites)
+# se filtran los sitios que no tuvieron resultados
 sites = [sites[n] for n in get_not_0()]
 
 
