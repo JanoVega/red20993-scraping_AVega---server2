@@ -154,7 +154,7 @@ def csv_check(sites):
         
         try:
             sites_dict[site].results_check(search_keyword)
-            check_row += '    '+'no hay problema con los resultados'
+            check_row += '    '+'no hay problema con los resultados'+'\n'
         except Exception as e:    
             check_row += '    '+str(e) + '\n'
         for n in [2,3,-4]:
@@ -193,14 +193,16 @@ def get_not_0():
             cuerpo = int(re.sub('[\s\D]', '', cuerpo.split('/')[0]))
         except:
             cuerpo = 0
-            
+
         if titulo*cuerpo != 0:
             not_0.append(n)
         else:
-            #mandar el email
+            # añadir linea al mensaje del mail
             pass
     #mandar email
     return not_0
+
+
 
 #%%
 # añadir assertions para chequear que se encuentre:
