@@ -22,7 +22,7 @@ from utils.csv_utils import save_to_check_csv
 
 # ubicacion del ejecutable para chromedriver
 path = os.getcwd() + '/chromedriver'
-path = '/snap/bin/chromium.chromedriver'
+#path = '/snap/bin/chromium.chromedriver'
 service = Service(executable_path=path)
 
 def get_page_safe_dynamic(url):
@@ -170,7 +170,7 @@ def scrape(url, search_keyword, save_row):
     
     # título
     try:
-        title = bs.find('p',{'class','title_offer fs21 ### fwB lh1_2'}).text
+        title = bs.find('p',{'class','title_offer fs21 fwB lh1_2'}).text
     except:
         title = ''
     # cuerpo
