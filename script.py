@@ -54,8 +54,6 @@ display.start()
 Crawler.check(sites)
 # se filtran los sitios que no tuvieron resultados
 sites = [sites[n] for n in get_not_0()]
-print(get_not_0())
-print(sites)
 Crawler.search(items, sites)
 
 # SMTP para enviar correo
