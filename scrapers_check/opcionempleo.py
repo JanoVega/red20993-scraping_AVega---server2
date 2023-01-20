@@ -19,7 +19,7 @@ from utils.csv_utils import save_to_check_csv
 
 # ubicacion del ejecutable para chromedriver
 path = os.getcwd() + '/chromedriver'
-path = '/snap/bin/chromium.chromedriver'
+#path = '/snap/bin/chromium.chromedriver'
 service = Service(executable_path=path)
 
 def get_page_safe_dynamic(url):
@@ -91,7 +91,7 @@ def results_check(search_keyword):
     num_results = int(num_results)     
     assert num_results != 0, 'No se encontraron resultados'
 
-    assert bs.find_all('article',{'class','#job clicky'})!=[], 'no se pudo acceder a los resultados'                   
+    assert bs.find_all('article',{'class','job clicky'})!=[], 'no se pudo acceder a los resultados'                   
                     
 
 def results(search_keyword):
@@ -120,7 +120,7 @@ def results(search_keyword):
     assert num_results != 0, 'No se encontraron resultados'
 
     # lista con links  
-    results = [ tag.a['href'] for tag in bs.find_all('article',{'class','#job clicky'})]    
+    results = [ tag.a['href'] for tag in bs.find_all('article',{'class','job clicky'})]    
         
     n = 0    
 
