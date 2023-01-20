@@ -29,7 +29,7 @@ def send_check_msg():
     msg['From'] = 'test de jano'
     msg['To'] = 'a.vega06@ufromail.cl'
     # Send the message via our own SMTP server.
-    s = smtplib.SMTP('localhost')
+    s = smtplib.SMTP('localhost', port=25)
     #s.starttls()
     s.send_message(msg)
     s.quit()
