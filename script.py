@@ -2,6 +2,8 @@ from pyvirtualdisplay import Display
 
 from main_scraper import Crawler
 from utils.date_utils import get_date
+from utils.check_utils import get_not_0
+
 
 """
 Sitios que funcionan:
@@ -28,8 +30,8 @@ items = [#'ingenieria en informacion y control de gestion'\
                 ]
 
 
-sites = [#'chiletrabajos',\
-         'opcionempleo',\
+sites = ['chiletrabajos',\
+         #'opcionempleo',\
          'computrabajo',\
          #'elmercurio',\
          #'trabajando',\
@@ -50,7 +52,15 @@ display = Display(visible=0, size=(800, 600))
 display.start()
 
 Crawler.check(sites)
-#Crawler.search(items, sites)
+sites=sites[get_not_0()]
+
+Crawler.search(items, sites)
+
+# SMTP para enviar correo
+
+#correo normal
+#correo extra en caso de errores
+#https://docs.python.org/3/library/smtplib.html
 
 
 display.stop()

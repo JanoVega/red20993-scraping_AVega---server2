@@ -166,6 +166,36 @@ def csv_check(sites):
             
     return 0
     gc.collect()
+
+
+
+
+
+def get_not_0():
+    date = get_date('hoy')    
+    date = re.sub('/', '.', date)
+    with open('check_informe_'+date+'.txt') as f:
+        lines = f.readlines()
+
+    # los sitios ocupan 5 lineas cada uno
+    N = int(len(lines)/5)
+    not_0 = []
+    #guardar los indices en donde si se pudo raspar
+    for n in range(N):
+        titulo = lines[5*n+1]
+        titulo = int(re.sub('[\s\D]', '', titulo.split('/')[0]))
+        
+        cuerpo = lines[5*n+2]
+        cuerpo = int(re.sub('[\s\D]', '', cuerpo.split('/')[0]))
+
+        if titulo*cuerpo != 0:
+            not_0.append(n)
+        else:
+            #mandar el email
+            pass
+        
+    return not_0
+
 #%%
 # añadir assertions para chequear que se encuentre:
     # el numero de resultados

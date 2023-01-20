@@ -34,7 +34,7 @@ from utils.csv_utils import save_to_check_csv
 # ubicacion del ejecutable para chromedriver
 path = os.getcwd() + '/chromedriver'
 #print(path)
-#path = '/snap/bin/chromium.chromedriver'
+path = '/snap/bin/chromium.chromedriver'
 service = Service(executable_path=path)
 
 
@@ -185,7 +185,7 @@ def scrape(url, search_keyword, save_row):
     # título
     
     try:
-        title = bs.find('h1').text
+        title = bs.find('h1 ##').text
     except:
         title =''
         
