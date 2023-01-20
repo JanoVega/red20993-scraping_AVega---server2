@@ -185,7 +185,7 @@ def scrape(url, search_keyword, save_row):
     # título
     
     try:
-        title = bs.find('h1 ##').text
+        title = bs.find('h1').text
     except:
         title =''
         
