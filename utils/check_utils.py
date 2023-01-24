@@ -178,7 +178,7 @@ def get_not_0():
         lines = f.readlines()
 
     # los sitios ocupan 5 lineas cada uno
-    N = int(len(lines)/5)
+    N = int(len(lines)/6)
     not_0 = []
     #guardar los indices en donde si se pudo raspar
     for n in range(N):
