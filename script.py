@@ -4,7 +4,7 @@ from main_scraper import Crawler
 from utils.date_utils import get_date
 from utils.check_utils import get_not_0
 from utils.email_utils import send_check_msg
-
+from utils.email_utils import send_informe_msg
 """
 Sitios que funcionan:
     
@@ -23,10 +23,10 @@ Sitios que no funcionan
 
 """
 
-items = [#'ingenieria en informacion y control de gestion'\
-          #  ,'ingenieria en administracion logistica'\
-             'fonoaudiologa'\
-         ,'medicina nuclear'
+items = ['ingenieria en informacion y control de gestion',\
+            'ingenieria en administracion logistica',\
+             'fonoaudiologa',\
+         'medicina nuclear'
                 ]
 
 
@@ -51,14 +51,19 @@ if get_date('hoy') == dia_primera_ejecucion:
 display = Display(visible=0, size=(800, 600))
 display.start()
 
-Crawler.check(sites)
 # se filtran los sitios que no tuvieron resultados
+Crawler.check(sites)
 sites = [sites[n] for n in get_not_0()]
 
 Crawler.search(items, sites)
 
 try:
     send_check_msg()
+except Exception as e:
+    print(e)
+
+try:
+    send_informe_msg()
 except Exception as e:
     print(e)
 

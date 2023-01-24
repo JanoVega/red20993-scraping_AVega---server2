@@ -20,7 +20,7 @@ from utils.date_utils import is_newer_date
 
 # ubicacion del ejecutable para chromedriver 
 path = os.getcwd() + '/chromedriver'
-path = '/snap/bin/chromium.chromedriver'
+#path = '/snap/bin/chromium.chromedriver'
 service = Service(executable_path=path)
 
 def get_page_dynamic(url):
