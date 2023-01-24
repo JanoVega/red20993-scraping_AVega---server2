@@ -183,12 +183,14 @@ def get_not_0():
     #guardar los indices en donde si se pudo raspar
     for n in range(N):
         titulo = lines[6*n+2]
+        print(titulo)
         try:
             titulo = int(re.sub('[\s\D]', '', titulo.split('/')[0]))
         except:
             titulo = 0
 
         cuerpo = lines[6*n+3]
+        print(cuerpo)
         try:
             cuerpo = int(re.sub('[\s\D]', '', cuerpo.split('/')[0]))
         except:
