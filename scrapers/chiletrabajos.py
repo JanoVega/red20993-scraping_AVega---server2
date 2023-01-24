@@ -52,7 +52,7 @@ def get_page_dynamic(url):
         chrome_options.add_argument("--headless")
         driver = webdriver.Chrome(service=service, options=chrome_options)        
         driver.get(url)
-        WebDriverWait(driver, 2)
+        WebDriverWait(driver, 4)
         html = driver.page_source
     #except Exception as e: 
         #print(e)
