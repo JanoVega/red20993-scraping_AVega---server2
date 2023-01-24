@@ -41,7 +41,7 @@ sites = ['chiletrabajos',\
 
     
 """ formato  día/mes/año, dia y mes sin 0 a la izquerda, ej: 2/5/2022 """
-dia_primera_ejecucion = '20/1/2023'
+dia_primera_ejecucion = '27/1/2023'
 
 if get_date('hoy') == dia_primera_ejecucion:
     """ para instanciar los csv """
@@ -53,10 +53,11 @@ display.start()
 
 Crawler.check(sites)
 # se filtran los sitios que no tuvieron resultados
-
-send_check_msg()
 sites = [sites[n] for n in get_not_0()]
 Crawler.search(items, sites)
+
+#send_check_msg()
+
 
 # SMTP para enviar correo
 
