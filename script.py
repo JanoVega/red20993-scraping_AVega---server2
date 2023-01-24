@@ -23,8 +23,8 @@ Sitios que no funcionan
 
 """
 
-items = ['ingenieria en informacion y control de gestion'\
-            ,'ingenieria en administracion logistica'\
+items = [#'ingenieria en informacion y control de gestion'\
+          #  ,'ingenieria en administracion logistica'\
              'fonoaudiologa'\
          'medicina nuclear'
                 ]
@@ -51,11 +51,12 @@ if get_date('hoy') == dia_primera_ejecucion:
 display = Display(visible=0, size=(800, 600))
 display.start()
 
-#Crawler.check(sites)
+Crawler.check(sites)
 # se filtran los sitios que no tuvieron resultados
-#sites = [sites[n] for n in get_not_0()]
+sites = [sites[n] for n in get_not_0()]
 
 Crawler.search(items, sites)
+
 try:
     send_check_msg()
 except Exception as e:
