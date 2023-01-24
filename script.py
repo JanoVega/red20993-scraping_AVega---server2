@@ -23,6 +23,13 @@ Sitios que no funcionan
 
 """
 
+
+"""
+chmod +x chromedriver
+La primera vez que se clona el repositorio para
+poder darle el permiso de ejecucion al chromedriver
+"""
+
 items = ['ingenieria en control de gestion',\
 	 'ingenieria en logistica',\
 	 'contador auditor',\
