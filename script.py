@@ -23,11 +23,22 @@ Sitios que no funcionan
 
 """
 
-items = ['ingenieria en informacion y control de gestion',\
-            'ingenieria en administracion logistica',\
-             'fonoaudiologa',\
-         'medicina nuclear'
-                ]
+items = ['ingenieria en control de gestion',\
+	 'ingenieria en logistica',\
+	 'contador auditor',\
+	 'ingenieria forestal',\
+	 'agronomia',\
+	 'medicina veterinaria',\
+	 'arquitectura',\
+	 'diseño',\
+	 'diseño grafico',\
+	 'geologia',\
+	 'quimica industrial',\
+	 'bioquimica',\
+	 'ingenieria en gestion publica',\
+	 'antropologia',\
+	 'psicologia',\
+	 ]
 
 
 sites = ['chiletrabajos',\
