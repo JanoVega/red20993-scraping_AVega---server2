@@ -271,7 +271,6 @@ def scrape(url, search_keyword, save_row):
         inclusividad = 'si' if columns[2].find_all('a') else 'no'
     except:
         inclusividad = 'no'
-    print(1)
     # salario
     try:
         salario = col3[0].text 
@@ -288,8 +287,6 @@ def scrape(url, search_keyword, save_row):
         etiquetas = ''.join([subtag.text for subtag in col3])
     except:
         etiquetas = ''
-
-    print(2)
     try:
         csv_row = [ str(search_keyword),\
                     category.strip('\n'),\

@@ -294,7 +294,7 @@ def scrape(url, search_keyword):
         table_section = [tag for tag in section_detalle.children][0] 
         body_section = [tag for tag in section_detalle.children][1]
         
-        corpus = body_section.find('div')
+        corpus = body_section.find('div').find('div')
 
         # cuerpo
         body =  body_cleanser(corpus)
@@ -304,9 +304,13 @@ def scrape(url, search_keyword):
         
         col1 = columns[0].find_all('li')
         col2 = columns[1].find_all('li')
-        col3 = columns[2].find_all('li')  # podria usarse para recolectar las vacantes
-    except:
-        print('posible problema con la estructura del sitio')
+        try:
+            col3 = columns[2].find_all('li')  # podria usarse para recolectar las vacantes
+        except:
+            col3 = []
+    except Exception as e:
+        print(e)
+        body = ''
     
     # fecha
     date = get_date(col1[0].text)
@@ -323,8 +327,10 @@ def scrape(url, search_keyword):
     # categoria
     category = col2[0].text
     
-    # inclusividad 
-    inclusividad = 'si' if columns[2].find_all('a') else 'no'
+    try:
+        inclusividad = 'si' if columns[2].find_all('a') else 'no'
+    except:
+        inclusividad = 'no'
 
     # salario
     try:
