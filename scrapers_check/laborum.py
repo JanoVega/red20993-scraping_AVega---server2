@@ -247,12 +247,14 @@ def scrape(url, search_keyword, save_row):
         col1 = columns[0].find_all('li')
         col2 = columns[1].find_all('li')
         col3 = columns[2].find_all('li')  # podria usarse para recolectar las vacantes
-    except:
+    except Exception as e:
+        print(e)
         body = ''
         
-    print(table_section.text)
+   
     print(body_section.text)
     print('hasta aqui bien?')
+    print(url +'\n')
     print(body)
     print('------------------ \n')
     # ubicación
