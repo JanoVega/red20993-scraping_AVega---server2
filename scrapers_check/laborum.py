@@ -244,10 +244,10 @@ def scrape(url, search_keyword, save_row):
         table = table_section.find('div').find('div').find('div')
         columns = [tag for tag in table.children]
         
-        col1 = columns[0].find_all('div')
-        col2 = columns[1].find_all('div')
+        col1 = columns[0].find_all('li')
+        col2 = columns[1].find_all('li')
         try:
-            col3 = columns[2].find_all('div')  # podria usarse para recolectar las vacantes
+            col3 = columns[2].find_all('li')  # podria usarse para recolectar las vacantes
         except:
             col3 = []
     except Exception as e:
