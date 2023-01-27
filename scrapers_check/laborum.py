@@ -285,22 +285,24 @@ def scrape(url, search_keyword, save_row):
     except:
         etiquetas = ''
 
-    csv_row = [ str(search_keyword),\
-                category.strip('\n'),\
-                title.strip('\n'),\
-                body.strip('\n'),\
-                #date,\
-                location,\
-                modalidad,\
-                jornada,\
-                inclusividad,\
-                salario,\
-                publicador,\
-                etiquetas,\
-                url,\
-                'laborum',
-                ]    
-
+    try:
+        csv_row = [ str(search_keyword),\
+                    category.strip('\n'),\
+                    title.strip('\n'),\
+                    body.strip('\n'),\
+                    #date,\
+                    location,\
+                    modalidad,\
+                    jornada,\
+                    inclusividad,\
+                    salario,\
+                    publicador,\
+                    etiquetas,\
+                    url,\
+                    'laborum',
+                    ]    
+    except Exception as e:
+        print(str(e))
 
     if save_row == True:
         save_to_check_csv(csv_row)
