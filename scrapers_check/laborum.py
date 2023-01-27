@@ -251,9 +251,10 @@ def scrape(url, search_keyword, save_row):
         body = ''
         
     print(table_section.text)
-    print(title)
     print(body_section.text)
     print('hasta aqui bien?')
+    print(body)
+    print('------------------ \n')
     # ubicación
     location = col1[1].text
     
