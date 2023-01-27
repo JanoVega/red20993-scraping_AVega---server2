@@ -48,18 +48,18 @@ items = ['ingenieria en control de gestion',\
 	 ]
 
 
-sites = ['chiletrabajos',\
-         'opcionempleo',\
-         'computrabajo',\
-         'elmercurio',\
-         'trabajando',\
+sites = [#'chiletrabajos',\
+         #'opcionempleo',\
+         #'computrabajo',\
+         #'elmercurio',\
+         #'trabajando',\
          'laborum',\
-         'indeed',\
+         #'indeed',\
          ]
 
     
 """ formato  día/mes/año, dia y mes sin 0 a la izquerda, ej: 2/5/2022 """
-dia_primera_ejecucion = '24/1/2023'
+dia_primera_ejecucion = '27/1/2023'
 
 if get_date('hoy') == dia_primera_ejecucion:
     """ para instanciar los csv """
