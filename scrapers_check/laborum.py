@@ -246,7 +246,10 @@ def scrape(url, search_keyword, save_row):
         
         col1 = columns[0].find_all('div')
         col2 = columns[1].find_all('div')
-        col3 = columns[2].find_all('div')  # podria usarse para recolectar las vacantes
+        try:
+            col3 = columns[2].find_all('div')  # podria usarse para recolectar las vacantes
+        except:
+            col3 = []
     except Exception as e:
         print(e)
         body = ''
