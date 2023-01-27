@@ -236,7 +236,7 @@ def scrape(url, search_keyword, save_row):
         table_section = [tag for tag in section_detalle.children][0] 
         body_section = [tag for tag in section_detalle.children][1]
         
-        corpus = body_section.find('div')
+        corpus = body_section.find('p')
 
         # cuerpo
         body =  body_cleanser(corpus)
