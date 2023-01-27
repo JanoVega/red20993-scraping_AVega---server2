@@ -130,7 +130,6 @@ def results_check(search_keyword):
             results.append(aviso.a['href']) 
         except :
             continue
-    print(results)
     assert results!=[], 'no se pudo acceder a los resultados'
 def results(search_keyword):
     """
@@ -192,6 +191,7 @@ def results(search_keyword):
             scrape(url, search_keyword,True)  
             n += 1
         except:
+            print('no raspado')
             continue
 
     informe_row = 'laborum: ' + str(n)+'/'+str(len(results)) 
@@ -250,7 +250,9 @@ def scrape(url, search_keyword, save_row):
     except:
         body = ''
         
-
+    print(title)
+    print(body)
+    print('hasta aqui bien?')
     # ubicación
     location = col1[1].text
     
