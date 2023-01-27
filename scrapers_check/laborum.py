@@ -236,7 +236,7 @@ def scrape(url, search_keyword, save_row):
         table_section = [tag for tag in section_detalle.children][0] 
         body_section = [tag for tag in section_detalle.children][1]
         
-        corpus = body_section.find('p')
+        corpus = body_section.find('div').find('div')
 
         # cuerpo
         body =  body_cleanser(corpus)
@@ -244,9 +244,9 @@ def scrape(url, search_keyword, save_row):
         table = table_section.find('div').find('div').find('div')
         columns = [tag for tag in table.children]
         
-        col1 = columns[0].find_all('li')
-        col2 = columns[1].find_all('li')
-        col3 = columns[2].find_all('li')  # podria usarse para recolectar las vacantes
+        col1 = columns[0].find_all('div')
+        col2 = columns[1].find_all('div')
+        col3 = columns[2].find_all('div')  # podria usarse para recolectar las vacantes
     except Exception as e:
         print(e)
         body = ''
