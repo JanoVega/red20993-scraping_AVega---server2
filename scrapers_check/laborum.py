@@ -130,7 +130,7 @@ def results_check(search_keyword):
             results.append(aviso.a['href']) 
         except :
             continue
-        
+    print(results)
     assert results!=[], 'no se pudo acceder a los resultados'
 def results(search_keyword):
     """
