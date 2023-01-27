@@ -254,6 +254,9 @@ def scrape(url, search_keyword, save_row):
         print(e)
         body = ''
         
+
+    print(col1)
+    print(col2)
     # ubicación
     location = col1[1].text
     
