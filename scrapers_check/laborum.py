@@ -254,18 +254,12 @@ def scrape(url, search_keyword, save_row):
         print(e)
         body = ''
         
-   
-    print(body_section.text)
-    print('hasta aqui bien?')
-    print(url +'\n')
-    print(body)
-    print('------------------ \n')
     # ubicación
     location = col1[1].text
     
     # modalidad
     modalidad = col1[2].text
-
+    print(0)
     # jornada    
     jornada = col2[1].text
     
@@ -275,6 +269,7 @@ def scrape(url, search_keyword, save_row):
     # inclusividad 
     inclusividad = 'si' if columns[2].find_all('a') else 'no'
 
+    print(1)
     # salario
     try:
         salario = col3[0].text 
@@ -292,6 +287,7 @@ def scrape(url, search_keyword, save_row):
     except:
         etiquetas = ''
 
+    print(2)
     try:
         csv_row = [ str(search_keyword),\
                     category.strip('\n'),\
