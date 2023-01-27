@@ -253,16 +253,13 @@ def scrape(url, search_keyword, save_row):
     except Exception as e:
         print(e)
         body = ''
-        
-
-    print(col2[0].text)
-    
+   
     # ubicación
     location = col1[1].text
     
     # modalidad
     modalidad = col1[2].text
-    print(0)
+
     # jornada    
     jornada = col2[1].text
     
@@ -270,8 +267,10 @@ def scrape(url, search_keyword, save_row):
     category = col2[0].text
     
     # inclusividad 
-    inclusividad = 'si' if columns[2].find_all('a') else 'no'
-
+    try:
+        inclusividad = 'si' if columns[2].find_all('a') else 'no'
+    except:
+        inclusividad = 'no'
     print(1)
     # salario
     try:
