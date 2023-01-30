@@ -70,8 +70,12 @@ display = Display(visible=0, size=(800, 600))
 display.start()
 
 # se filtran los sitios que no tuvieron resultados
-Crawler.check(sites)
-sites = [sites[n] for n in get_not_0()]
+
+try:
+    Crawler.check(sites)
+    sites = [sites[n] for n in get_not_0()]
+except:
+    pass
 
 Crawler.search(items, sites)
 
