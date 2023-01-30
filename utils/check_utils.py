@@ -174,9 +174,14 @@ def csv_check(sites):
 def get_not_0():
     date = get_date('hoy')    
     date = re.sub('/', '.', date)
-    with open('check_informe_'+date+'.txt') as f:
-        lines = f.readlines()
-
+    try:
+        with open('check_informe_'+date+'.txt') as f:
+            lines = f.readlines()
+    except:
+        date = get_date('ayer')    
+        date = re.sub('/', '.', date)  
+        with open('check_informe_'+date+'.txt') as f:
+            lines = f.readlines()     
     # los sitios ocupan 5 lineas cada uno
     N = int(len(lines)/6)
     not_0 = []
