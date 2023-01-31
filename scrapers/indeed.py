@@ -145,7 +145,7 @@ def results(search_keyword):
     # chequea si no estoy en la ultima pagina con resultados
     Contador_ciclo = 0
     print('antes del while')
-    while bs.find_all('a', {'class', 'css-cy0uue e8ju0x50'})[-1].attrs['aria-label']=='Next Page': 
+    while bs.find_all('a', {'class', 'css-13p07ha e8ju0x50'})[-1].attrs['aria-label']=='Next Page': 
         """
         recorré todas las páginas de resultados desde la 2da si es que hay más paginas que recorrer      
         """
