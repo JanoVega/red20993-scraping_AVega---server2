@@ -114,6 +114,7 @@ def results(search_keyword):
     Contador_ciclo = 0
     boton_sgt_pgn = bs.find_all('a',{'class','btn btn-r btn-primary-inverted'})
     while boton_sgt_pgn:   
+        boton_sgt_pgn = bs.find_all('a',{'class','btn btn-r btn-primary-inverted'})
         # para esta página, p tiene un valor máximo de 100,
         # 20 resultados por página
         p += 1

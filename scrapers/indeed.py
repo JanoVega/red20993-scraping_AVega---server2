@@ -146,6 +146,7 @@ def results(search_keyword):
     Contador_ciclo = 0
     boton_sgt_pgn = bs.find_all('a', {'class', 'css-13p07ha e8ju0x50'})[-1]
     while  boton_sgt_pgn.attrs['aria-label']=='Next Page': 
+        boton_sgt_pgn = bs.find_all('a', {'class', 'css-13p07ha e8ju0x50'})[-1]
         """
         recorré todas las páginas de resultados desde la 2da si es que hay más paginas que recorrer      
         """

@@ -123,8 +123,9 @@ def results(search_keyword):
     p = 1
     # chequea si hay botones para la siguiente pagina 
     Contador_ciclo = 0
-    boton_sgt_pgn=bs.find_all('span',{'class','b_primary w48 buildLink cp'})
-    while boton_sgt_pgn:   
+    boton_sgt_pgn = bs.find_all('span',{'class','b_primary w48 buildLink cp'})
+    while boton_sgt_pgn: 
+        boton_sgt_pgn = bs.find_all('span',{'class','b_primary w48 buildLink cp'})  
         p += 1
         """
         recorré todas las páginas de resultados desde la 2da si es que hay más paginas que recorrer      
