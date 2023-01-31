@@ -152,23 +152,18 @@ def results(search_keyword):
         """
         assert Contador_ciclo < 200, '200 iteraciones en el ciclo'
         try:
-            # extrae el link del boton
-            print(0)
+            # extrae el link del boton           
             url = 'https://cl.indeed.com' \
-                + boton_sgt_pgn.attrs['href']
-            print(1)
+                + boton_sgt_pgn.attrs['href']            
             bs = get_page_safe_dynamic(url)
         except:
             continue
         Contador_ciclo += 1
         # se expande la lista con links
-        print(2)
-        results += [tag.a['href'] for tag in bs.find_all('div',{'class','job_seen_beacon'})]  
-        print(3)
+        results += [tag.a['href'] for tag in bs.find_all('div',{'class','job_seen_beacon'})]    
         results_dates += [get_date(tag.find('span',{'class','date'}).text) \
                     for tag in bs.find_all('div',{'class','job_seen_beacon'})]          
 
-    print('despues del while')
     ######
     # fecha de la última vez que se ejecuto el main_scraper con este item
     try: 
