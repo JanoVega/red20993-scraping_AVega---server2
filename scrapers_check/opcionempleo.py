@@ -92,7 +92,9 @@ def results_check(search_keyword):
     assert num_results != 0, 'No se encontraron resultados'
 
     assert bs.find_all('article',{'class','job clicky'})!=[], 'no se pudo acceder a los resultados'                   
-                    
+
+    boton_sgt_pgn = bs.find_all('a',{'class','btn btn-r btn-primary-inverted'})
+    assert boton_sgt_pgn!=[], 'boton siguiente pagina no encontrado'   
 
 def results(search_keyword):
     """

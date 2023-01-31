@@ -144,8 +144,8 @@ def results(search_keyword):
     # resto de páginas
     # chequea si no estoy en la ultima pagina con resultados
     Contador_ciclo = 0
-    print('antes del while')
-    while bs.find_all('a', {'class', 'css-13p07ha e8ju0x50'})[-1].attrs['aria-label']=='Next Page': 
+    boton_sgt_pgn = bs.find_all('a', {'class', 'css-13p07ha e8ju0x50'})[-1]
+    while  boton_sgt_pgn.attrs['aria-label']=='Next Page': 
         """
         recorré todas las páginas de resultados desde la 2da si es que hay más paginas que recorrer      
         """
@@ -154,7 +154,7 @@ def results(search_keyword):
             # extrae el link del boton
             print(0)
             url = 'https://cl.indeed.com' \
-                + bs.find_all('a', {'class', 'css-cy0uue e8ju0x50'})[-1].attrs['href']
+                + boton_sgt_pgn.attrs['href']
             print(1)
             bs = get_page_safe_dynamic(url)
         except:

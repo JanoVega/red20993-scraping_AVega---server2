@@ -52,7 +52,7 @@ def get_page_dynamic(url):
         #hrome_options.add_argument("--headless")
         driver = webdriver.Chrome(service=service, options=chrome_options)        
         driver.get(url)
-        WebDriverWait(driver, 4)
+        WebDriverWait(driver, 10)
         html = driver.page_source
     #except Exception as e: 
         #print(e)
@@ -81,12 +81,12 @@ def get_page_safe_dynamic(url):
     driver = webdriver.Chrome(service=service, options=chrome_options)        
     try:
         driver.get(url)
-        WebDriverWait(driver, 3)
+        WebDriverWait(driver, 10)
         html = driver.page_source
     except ConnectionError:
         time.sleep(3)
         driver.get(url)
-        WebDriverWait(driver, 3)
+        WebDriverWait(driver, 10)
         html = driver.page_source
     finally:   
         driver.close()

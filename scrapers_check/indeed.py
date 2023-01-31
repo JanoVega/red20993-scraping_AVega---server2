@@ -123,7 +123,10 @@ def results_check(search_keyword):
     num_results = int(num_results)
     assert num_results != 0, 'No se encontraron resultados' 
     
-    assert bs.find_all('div',{'class','job_seen_beacon'})!=[] ,'no se pudo acceder a los resultados'
+    assert bs.find_all('div',{'class','job_seen_beacon'})!=[], 'no se pudo acceder a los resultados'
+
+    boton_sgt_pgn = bs.find_all('a', {'class', 'css-13p07ha e8ju0x50'})[-1]
+    assert boton_sgt_pgn!=[], 'boton siguiente pagina no encontrado'
 
 def results(search_keyword):
     """

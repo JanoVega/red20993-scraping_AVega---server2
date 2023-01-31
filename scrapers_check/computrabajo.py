@@ -98,6 +98,8 @@ def results_check(search_keyword):
     num_results = int(num_results)  
     assert num_results > 0, 'no hay resultados'
     assert bs.find_all('article')!=[],'lista de resultados vacia'
+    boton_sgt_pgn = bs.find_all('span',{'class','b_primary w48 buildLink cp'})
+    assert boton_sgt_pgn!=[], 'boton siguiente pagina no encontrado'
 
 def results(search_keyword):
     """

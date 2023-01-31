@@ -112,7 +112,8 @@ def results(search_keyword):
     p = 1
     # chequea si hay botones para la siguiente página 
     Contador_ciclo = 0
-    while bs.find_all('a',{'class','btn btn-r btn-primary-inverted'}):   
+    boton_sgt_pgn = bs.find_all('a',{'class','btn btn-r btn-primary-inverted'})
+    while boton_sgt_pgn:   
         # para esta página, p tiene un valor máximo de 100,
         # 20 resultados por página
         p += 1
