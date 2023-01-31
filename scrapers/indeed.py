@@ -20,7 +20,7 @@ from utils.date_utils import is_newer_date
 
 # ubicacion del ejecutable para chromedriver 
 path = os.getcwd() + '/chromedriver'
-#path = '/snap/bin/chromium.chromedriver'
+path = '/snap/bin/chromium.chromedriver'
 service = Service(executable_path=path)
 
 def get_page_dynamic(url):
@@ -144,6 +144,7 @@ def results(search_keyword):
     # resto de páginas
     # chequea si no estoy en la ultima pagina con resultados
     Contador_ciclo = 0
+    print('antes del while')
     while bs.find_all('a', {'class', 'css-cy0uue e8ju0x50'})[-1].attrs['aria-label']=='Next Page': 
         """
         recorré todas las páginas de resultados desde la 2da si es que hay más paginas que recorrer      
@@ -163,7 +164,7 @@ def results(search_keyword):
         results_dates += [get_date(tag.find('span',{'class','date'}).text) \
                     for tag in bs.find_all('div',{'class','job_seen_beacon'})]          
 
-    
+    print('despues del while')
     ######
     # fecha de la última vez que se ejecuto el main_scraper con este item
     try: 
@@ -209,7 +210,7 @@ def results(search_keyword):
                  + result_url )
             retry_links_dates.append(date)
             continue      
-
+    print('despues del raspado')
     # intento de nuevo con los que no funcionaron
     failed_links = []
     for index, link in enumerate(retry_links):

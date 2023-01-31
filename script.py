@@ -48,12 +48,12 @@ items = ['ingenieria en control de gestion',\
 	 ]
 
 
-sites = ['chiletrabajos',\
-         'opcionempleo',\
-         'computrabajo',\
-         'elmercurio',\
-         'trabajando',\
-         'laborum',\
+sites = [#'chiletrabajos',\
+         #'opcionempleo',\
+         #'computrabajo',\
+         #'elmercurio',\
+         #'trabajando',\
+         #'laborum',\
          'indeed',\
          ]
 
