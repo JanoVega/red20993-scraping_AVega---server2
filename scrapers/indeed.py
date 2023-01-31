@@ -159,6 +159,7 @@ def results(search_keyword):
         except:
             continue
         Contador_ciclo += 1
+        print(Contador_ciclo)
         # se expande la lista con links
         results += [tag.a['href'] for tag in bs.find_all('div',{'class','job_seen_beacon'})]    
         results_dates += [get_date(tag.find('span',{'class','date'}).text) \
