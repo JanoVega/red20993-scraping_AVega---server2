@@ -125,7 +125,6 @@ def results(search_keyword):
     Contador_ciclo = 0
     boton_sgt_pgn = bs.find_all('span',{'class','b_primary w48 buildLink cp'})
     while boton_sgt_pgn: 
-        boton_sgt_pgn = bs.find_all('span',{'class','b_primary w48 buildLink cp'})  
         p += 1
         """
         recorré todas las páginas de resultados desde la 2da si es que hay más paginas que recorrer      
@@ -140,6 +139,8 @@ def results(search_keyword):
         assert len(bs.find_all('article')) != 0    
         results += ['?p='+str(p)+'#'+re.sub('[a-z,-/]','',tag.a['href']).split('#')[0] for tag in bs.find_all('article')]
         results_dates += [tag.div.find_all('p')[-1].text for tag in bs.find_all('article')]
+        
+        boton_sgt_pgn = bs.find_all('span',{'class','b_primary w48 buildLink cp'})  
     # fecha de la última vez que se ejecuto el main_scraper con este item
     try: 
        resume_date = load_date('computrabajo', search_keyword)

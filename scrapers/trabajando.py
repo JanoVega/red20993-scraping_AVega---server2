@@ -203,7 +203,7 @@ def results(search_keyword):
     # voy guardando los links de estas.
     p=1
     Contador_ciclo = 0
-    while len(results)/(num_results-1)<0.99:
+    while len(results)/(num_results-1)<0.9:
     
         html = driver.page_source
         bs = BeautifulSoup(html,'html.parser')

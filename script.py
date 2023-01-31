@@ -30,30 +30,30 @@ La primera vez que se clona el repositorio para
 poder darle el permiso de ejecucion al chromedriver
 """
 
-items = [#'ingenieria en control de gestion',\
-	 #'ingenieria en logistica',\
-	 #'contador auditor',\
-	 #'ingenieria forestal',\
-	 #'agronomia',\
-	 #'medicina veterinaria',\
-	 #'arquitectura',\
-	 #'diseño',\
-	 #'diseño grafico',\
-	 #'geologia',\
-	 #'quimica industrial',\
-	 #'bioquimica',\
-	 #'ingenieria en gestion publica',\
+items = ['ingenieria en control de gestion',\
+	 'ingenieria en logistica',\
+	 'contador auditor',\
+	 'ingenieria forestal',\
+	 'agronomia',\
+	 'medicina veterinaria',\
+	 'arquitectura',\
+	 'diseño',\
+	 'diseño grafico',\
+	 'geologia',\
+	 'quimica industrial',\
+	 'bioquimica',\
+	 'ingenieria en gestion publica',\
 	 'antropologia',\
-	 #'psicologia',\
+	 'psicologia',\
 	 ]
 
 
-sites = [#'chiletrabajos',\
-         #'opcionempleo',\
-         #'computrabajo',\
-         #'elmercurio',\
-         #'trabajando',\
-         #'laborum',\
+sites = ['chiletrabajos',\
+         'opcionempleo',\
+         'computrabajo',\
+         'elmercurio',\
+         'trabajando',\
+         'laborum',\
          'indeed',\
          ]
 

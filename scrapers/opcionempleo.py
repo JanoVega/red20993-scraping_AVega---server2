@@ -114,7 +114,6 @@ def results(search_keyword):
     Contador_ciclo = 0
     boton_sgt_pgn = bs.find_all('a',{'class','btn btn-r btn-primary-inverted'})
     while boton_sgt_pgn:   
-        boton_sgt_pgn = bs.find_all('a',{'class','btn btn-r btn-primary-inverted'})
         # para esta página, p tiene un valor máximo de 100,
         # 20 resultados por página
         p += 1
@@ -133,6 +132,8 @@ def results(search_keyword):
         results += [ tag.a['href'] for tag in bs.find_all('article',{'class','job clicky'})]    
         results_dates += [get_date( tag.find_all('span')[1].text)\
                      for tag in bs.find_all('article',{'class','job clicky'})]
+                     
+        boton_sgt_pgn = bs.find_all('a',{'class','btn btn-r btn-primary-inverted'})
             
     # fecha de la última vez que se ejecuto el main_scraper con este item
     try: 
