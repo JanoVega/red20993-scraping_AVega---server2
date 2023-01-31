@@ -44,7 +44,7 @@ items = [#'ingenieria en control de gestion',\
 	 #'bioquimica',\
 	 #'ingenieria en gestion publica',\
 	 'antropologia',\
-	 'psicologia',\
+	 #'psicologia',\
 	 ]
 
 
